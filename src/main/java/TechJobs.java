@@ -90,7 +90,7 @@ public class TechJobs {
 
             System.out.println("\n" + menuHeader);
 
-            // Print available choices
+            // Print available choices for user to select from
             for (int j = 0; j < choiceKeys.length; j++) {
                 System.out.println("" + j + " - " + choices.get(choiceKeys[j]));
             }
