@@ -75,11 +75,10 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
-
         return jobs;
     }
 
@@ -95,7 +94,20 @@ public class JobData {
         loadData();
 
         // TODO - implement this method
-        return null;
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+
+            for (String entry : row.values()) {
+                if (entry.toLowerCase().contains(value.toLowerCase())) {
+                    if (!jobs.contains(value)) {
+                        jobs.add(row);
+                        break;
+                    }
+                }
+            }
+        }
+        return jobs;
     }
 
     /**
@@ -110,7 +122,7 @@ public class JobData {
 
         try {
 
-            // Open the CSV file and set up pull out column header info and records
+            // Open the job_data CSV file and set up pull out column header info and records
             Reader in = new FileReader(DATA_FILE);
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
             List<CSVRecord> records = parser.getRecords();
