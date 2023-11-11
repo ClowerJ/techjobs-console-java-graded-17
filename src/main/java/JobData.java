@@ -74,7 +74,7 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
-
+// make sure search is cas insensitive
             if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
@@ -95,7 +95,7 @@ public class JobData {
 
         // TODO - implement this method
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-
+//search by user input for specific term or value, make search case-insensitive
         for (HashMap<String, String> row : allJobs) {
 
             for (String entry : row.values()) {
@@ -123,6 +123,7 @@ public class JobData {
         try {
 
             // Open the job_data CSV file and set up pull out column header info and records
+            // header contains key format
             Reader in = new FileReader(DATA_FILE);
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
             List<CSVRecord> records = parser.getRecords();
