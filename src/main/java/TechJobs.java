@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class TechJobs {
 
     static Scanner in = new Scanner(System.in);
-
+g
     public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
